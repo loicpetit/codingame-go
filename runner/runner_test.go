@@ -17,7 +17,7 @@ func TestSetStateHeight(t *testing.T) {
 		simplegame.Strategy{},
 		simplegame.Writer{},
 	)
-	finalState := runner.run(nil)
+	finalState := runner.Run(nil)
 	if finalState == nil {
 		t.Fatal("Final state should not be nil")
 	}

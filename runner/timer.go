@@ -15,7 +15,7 @@ type Timer struct {
 	roundDurations []time.Duration
 }
 
-func (timer *Timer) startInit() {
+func (timer *Timer) StartInit() {
 	if timer == nil {
 		return
 	}
@@ -23,14 +23,14 @@ func (timer *Timer) startInit() {
 	timer.initDuration = 0
 }
 
-func (timer *Timer) endInit() {
+func (timer *Timer) EndInit() {
 	if timer == nil {
 		return
 	}
 	timer.initDuration = time.Since(timer.initStart)
 }
 
-func (timer *Timer) startRound() {
+func (timer *Timer) StartRound() {
 	if timer == nil {
 		return
 	}
@@ -38,7 +38,7 @@ func (timer *Timer) startRound() {
 	timer.roundDuration = 0
 }
 
-func (timer *Timer) endRound() {
+func (timer *Timer) EndRound() {
 	if timer == nil {
 		return
 	}

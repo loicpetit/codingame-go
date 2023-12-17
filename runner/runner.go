@@ -11,7 +11,7 @@ type Runner[INPUT any, STATE any, ACTION any] struct {
 	writer   OutputWriter[ACTION]
 }
 
-func (runner Runner[INPUT, STATE, ACTION]) run(quit chan bool) *STATE {
+func (runner Runner[INPUT, STATE, ACTION]) Run(quit chan bool) *STATE {
 	timer := NewTimer()
 	inputs := runner.reader.Read()
 	state := runner.game.Start()
@@ -46,19 +46,19 @@ func (runner Runner[INPUT, STATE, ACTION]) run(quit chan bool) *STATE {
 
 func startTimer(timer *Timer, round int) time.Time {
 	if round == 1 {
-		timer.startInit()
+		timer.StartInit()
 		return timer.initStart.Add(980 * time.Millisecond)
 	} else {
-		timer.startRound()
+		timer.StartRound()
 		return timer.roundStart.Add(80 * time.Millisecond)
 	}
 }
 
 func endTimer(timer *Timer, round int) {
 	if round == 1 {
-		timer.endInit()
+		timer.EndInit()
 	} else {
-		timer.endRound()
+		timer.EndRound()
 	}
 }
 
