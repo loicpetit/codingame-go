@@ -5,5 +5,5 @@ import (
 )
 
 type Strategy[STATE any, ACTION any] interface {
-	findAction(state *STATE, player int, maxTime time.Time) *ACTION
+	FindAction(state *STATE, player int, maxTime time.Time) *ACTION
 }
