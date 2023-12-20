@@ -9,6 +9,10 @@ type State struct {
 	Count      int
 }
 
-func (state *State) String() string {
+func (state State) String() string {
 	return fmt.Sprintf("{lastPlayer: %d, count: %d}", state.LastPlayer, state.Count)
+}
+
+func (state State) Hash() string {
+	return fmt.Sprintf("%d-%d", state.LastPlayer, state.Count)
 }

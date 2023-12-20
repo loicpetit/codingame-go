@@ -10,14 +10,25 @@ func (Game) Start() *State {
 	}
 }
 func (Game) GetAvailableActions(state *State, player int) []*Action {
-	if player != 1 && player != 2 {
-		panic("Player must be 1 or 2")
+	if player == 1 {
+		return []*Action{
+			{Player: player, Count: 1},
+			{Player: player, Count: 2},
+			{Player: player, Count: 3},
+		}
 	}
-	return []*Action{
-		{player: player, count: 1},
-		{player: player, count: 2},
-		{player: player, count: 3},
+	if player == 2 {
+		return []*Action{
+			{Player: player, Count: 1},
+		}
 	}
+	panic("Player must be 1 or 2")
+}
+func (Game) GetLastPlayer(state *State) int {
+	if state == nil {
+		return 0
+	}
+	return state.LastPlayer
 }
 func (Game) GetNextPlayer(state *State) int {
 	if state == nil || state.LastPlayer != 1 {
@@ -29,9 +40,15 @@ func (Game) Play(state *State, action *Action) *State {
 	if state == nil || action == nil {
 		return nil
 	}
+	if action.Player != 1 && action.Player != 2 {
+		panic("Player must be 1 or 2")
+	}
+	if action.Count < 1 || action.Count > 3 {
+		panic("Count must be between 1 and 3")
+	}
 	return &State{
-		LastPlayer: action.player,
-		Count:      state.Count + action.count,
+		LastPlayer: action.Player,
+		Count:      state.Count + action.Count,
 	}
 }
 func (Game) Winner(state *State) int {

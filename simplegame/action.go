@@ -1,6 +1,6 @@
 package simplegame
 
 type Action struct {
-	player int
-	count  int
+	Player int
+	Count  int
 }

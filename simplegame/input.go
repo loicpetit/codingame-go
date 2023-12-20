@@ -24,7 +24,7 @@ func (Reader) UpdateState(state *State, input Input) *State {
 }
 
 func (Reader) ValidateAction(action *Action, input Input) {
-	if action == nil || action.count < 1 || action.count > 3 {
+	if action == nil || action.Count < 1 || action.Count > 3 {
 		panic("Invalid action")
 	}
 }
